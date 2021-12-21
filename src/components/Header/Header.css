@@ -1,0 +1,25 @@
+.header{
+    display: flex;
+      justify-content: space-between;
+      width: 95%;
+      margin-left: auto;
+      margin-right: auto;
+      align-items: center;
+      cursor: pointer;
+      margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .portfolio-link, .title{
+    /* color: #fefeff; */
+    font-weight: bold;
+  }
+
+  .portfolio-link{
+   color: #000000;
+  }
+
+  .title-style{
+    color: #000000;
+    text-decoration: none;
+}
+  
