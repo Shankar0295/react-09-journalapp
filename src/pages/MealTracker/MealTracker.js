@@ -9,7 +9,7 @@ const MealTracker = () => {
     return (
         <div className='products'>
             <div className="products-name">
-                {hidebtn && <button onClick={hidebutton}>Start penning your mealtracker...</button>}
+                {hidebtn && <button onClick={hidebutton} className="pen-btn">Start penning your mealtracker...</button>}
             </div>
             <Footer />
         </div>

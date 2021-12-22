@@ -1,44 +1,20 @@
-import React, { useState } from 'react';
-import { SidebarData } from '../../utils/SideBarData'
+import React from 'react';
 import './NavBar.css';
-import { FaBars, FaWindowClose } from "react-icons/fa";
+import { FaPen, FaUtensils, FaBed, FaClipboardList } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import { IconContext } from 'react-icons';
 
 
 const NavBar = () => {
-
-    const [sidebar, setSidebar] = useState(false);
-
-    const showSidebar = () => setSidebar(!sidebar);
     return (
         <>
-            <IconContext.Provider value={{ color: '#fff' }}>
-                <div className='navbar'>
-                    <Link to='#' className='menu-bars'>
-                        <FaBars onClick={showSidebar} />
-                    </Link>
+            <IconContext.Provider value={{ color: '#000' }}>
+                <div className="sidebar">
+                    <Link to="/journal"><FaPen /><span>Journal</span></Link>
+                    <Link to="/sleep-tracker"><FaBed /><span>Sleep Tracker</span></Link>
+                    <Link to="/meal-tracker"><FaUtensils /><span>Meal Tracker</span></Link>
+                    <Link to="/todos"><FaClipboardList /><span>Todo List</span></Link>
                 </div>
-                <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
-                    <ul className='nav-menu-items' onClick={showSidebar}>
-                        <li className='navbar-toggle'>
-                            <Link to='#' className='menu-bars'>
-                                <FaWindowClose />
-                            </Link>
-                        </li>
-                        <li><h2 className="user-name">Welcome, Shankar</h2></li>
-                        {SidebarData.map((item, index) => {
-                            return (
-                                <li key={index} className={item.cName}>
-                                    <Link to={item.path}>
-                                        {item.icon}
-                                        <span>{item.title}</span>
-                                    </Link>
-                                </li>
-                            );
-                        })}
-                    </ul>
-                </nav>
             </IconContext.Provider>
         </>
     )

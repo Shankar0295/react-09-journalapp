@@ -1,20 +1,15 @@
 import React from "react";
-import { useAuth0 } from "@auth0/auth0-react";
+import { FaSignOutAlt } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 import "./LogOut.css";
+import { IconContext } from 'react-icons';
+
 const LogoutButton = () => {
-  const { logout } = useAuth0();
   return (
-    <div className="logout-container">
-      <button
-        className="logout-btn"
-        onClick={() =>
-          logout({
-            returnTo: window.location.origin + "/login",
-          })
-        }
-      >
-        Log Out
-      </button>
+    <div>
+      <IconContext.Provider value={{ color: '#000' }}>
+        <Link to="/"><FaSignOutAlt /></Link>
+      </IconContext.Provider>
     </div>
   );
 };

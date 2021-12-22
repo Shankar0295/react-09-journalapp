@@ -8,7 +8,7 @@ const TodoList = () => {
     }
     return (
         <div className='products'>
-            <div className="products-name">{hidebtn && <button onClick={hidebutton}>Start penning your todolist...</button>}</div>
+            <div className="products-name">{hidebtn && <button onClick={hidebutton} className="pen-btn">Start penning your todolist...</button>}</div>
             <Footer />
         </div>
     );

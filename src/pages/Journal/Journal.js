@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Footer from '../../components/Footer/Footer'
+import { useNavigate } from 'react-router';
 
 const Journal = () => {
-    const [hidebtn, setHidebtn] = useState(true)
+    let navigate = useNavigate();
     const hidebutton = (e) => {
-        setHidebtn(false)
+        return navigate('/journaldashboard')
     }
     return (
         <div className='products'>
             <div className="products-name">
-                {hidebtn && <button onClick={hidebutton}>Start penning your journal...</button>}
+                <button onClick={hidebutton} className="pen-btn">Start penning your journal...</button>
             </div>
             <Footer />
         </div>

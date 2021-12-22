@@ -8,7 +8,7 @@
 }
 .products {
   display: flex;
-  height: 80vh;
+  height: 100vh;
   align-items: center;
   justify-content: center;
   font-size: 16px;
@@ -17,5 +17,18 @@
 .products-name{
   display: flex;
   height: 80vh;
+  margin-top: 80px; 
+  margin-left: 160px;
   align-items: center;
+}
+
+.pen-btn{
+  padding: 10px;
+    background: #2a79b0;
+    color: #fff;
+    border: 1px solid #2a79b0;
+    font-size: 14px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
 }
