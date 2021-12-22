@@ -8,7 +8,7 @@ const LogoutButton = () => {
   return (
     <div>
       <IconContext.Provider value={{ color: '#000' }}>
-        <Link to="/"><FaSignOutAlt /></Link>
+        <Link to="/"><span className="user-details">Welcome, Shankar</span><FaSignOutAlt /></Link>
       </IconContext.Provider>
     </div>
   );
