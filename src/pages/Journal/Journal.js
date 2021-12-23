@@ -3,6 +3,7 @@ import Footer from '../../components/Footer/Footer'
 import { useNavigate } from 'react-router';
 
 const Journal = () => {
+
     let navigate = useNavigate();
     const hidebutton = (e) => {
         return navigate('/journaldashboard')

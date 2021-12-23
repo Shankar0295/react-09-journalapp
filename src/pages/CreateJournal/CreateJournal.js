@@ -3,7 +3,7 @@ import React from 'react';
 const CreateJournal = () => {
     return (
         <div className="content">
-            <h1>Create journal</h1>
+            <textarea rows="4" cols="50"></textarea>
         </div>
     )
 }

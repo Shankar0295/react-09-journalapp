@@ -10,23 +10,42 @@ import JournalDashboard from './pages/JournalDashboard/JournalDashboard';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import CreateJournal from './pages/CreateJournal/CreateJournal';
 import JournalDescription from './pages/JournalDescription/JournalDescription';
-
+import SignUp from './components/SignUp/SignUp'
+import { UserAuthContextProvider } from './context/UserAuthContext';
+import ProtectedRoute from './auth/ProtectedRoute'
 function App() {
   let location = useLocation();
   return (
     <div className="App">
       <Header props={location.pathname} />
-      {location.pathname === '/' || location.pathname === '/create' ? null : <NavBar />}
-      <Routes>
-        <Route exact path="/" element={<Login />} />
-        <Route exact path="/journal" element={<Journal />} />
-        <Route exact path="/sleep-tracker" element={<SleepTracker />} />
-        <Route exact path="/meal-tracker" element={<MealTracker />} />
-        <Route exact path="/todos" element={<TodoList />} />
-        <Route exact path="/journaldashboard" element={<JournalDashboard />} />
-        <Route exact path="/create" element={<CreateJournal />} />
-        <Route exact path="/journaldetails" element={<JournalDescription />} />
-      </Routes>
+      {location.pathname === '/' || location.pathname === '/create' || location.pathname === '/signup' ? null : <NavBar />}
+      <UserAuthContextProvider>
+        <Routes>
+          <Route exact path="/" element={<Login />} />
+          <Route exact path="/signup" element={<SignUp />} />
+          <Route exact path="/journal" element={<ProtectedRoute>
+            <Journal />
+          </ProtectedRoute>} />
+          <Route exact path="/sleep-tracker" element={<ProtectedRoute>
+            <SleepTracker />
+          </ProtectedRoute>} />
+          <Route exact path="/meal-tracker" element={<ProtectedRoute>
+            <MealTracker />
+          </ProtectedRoute>} />
+          <Route exact path="/todos" element={<ProtectedRoute>
+            <TodoList />
+          </ProtectedRoute>} />
+          <Route exact path="/journaldashboard" element={<ProtectedRoute>
+            <JournalDashboard />
+          </ProtectedRoute>} />
+          <Route exact path="/create" element={<ProtectedRoute>
+            <CreateJournal />
+          </ProtectedRoute>} />
+          <Route exact path="/journaldetails" element={<ProtectedRoute>
+            <JournalDescription />
+          </ProtectedRoute>} />
+        </Routes>
+      </UserAuthContextProvider>
     </div>
   );
 }

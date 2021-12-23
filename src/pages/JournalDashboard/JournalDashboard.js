@@ -1,6 +1,7 @@
 import React from 'react';
 import './JournalDashboard.css';
 import { useNavigate, Link } from 'react-router-dom';
+import Footer from '../../components/Footer/Footer'
 
 const JournalDashboard = () => {
     let navigate = useNavigate();
@@ -36,6 +37,7 @@ const JournalDashboard = () => {
                     </div>
                 </div>
             </div>
+            <Footer />
         </div>
 
     )

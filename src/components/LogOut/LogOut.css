@@ -15,3 +15,8 @@
 .user-details{
     margin-right: 16px;
 }
+
+.link{
+    text-decoration: none;
+    color: #000;
+}
