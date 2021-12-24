@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom'
 import { useUserAuth } from '../../context/UserAuthContext';
+import Footer from '../Footer/Footer'
 
 
 const SignUp = () => {
@@ -31,24 +32,27 @@ const SignUp = () => {
     }
     return (
         <div className="login-container">
-            <h2>Welcome! Please signup to pen your thoughts</h2>
-            {error && <div>{error}</div>}
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="email">Email address</label>
-                    <input type="email" id="email" className="email" value={email} onChange={handleChangeEmail} />
-                </div>
-                <div>
-                    <label htmlFor="password">Password</label>
-                    <input type="password" id="password" className="password" value={password} onChange={handleChangePassword} />
-                </div>
-                <div>
-                    <button type="submit">Sign Up</button>
-                </div>
-                <div>
-                    Already have an account? <Link to="/">Log In</Link>
-                </div>
-            </form>
+            <div className="login-wrapper">
+                <h2 className="login-header">Welcome! Please signup to pen your thoughts</h2>
+                {error && <div className="error-msg">{error}</div>}
+                <form onSubmit={handleSubmit} className="login-form">
+                    <div className="input-wrapper">
+                        <label className="login-label" htmlFor="email">Email address</label>
+                        <input type="email" id="email" className="email" placeholder="Enter Email address" value={email} onChange={handleChangeEmail} />
+                    </div>
+                    <div className="input-wrapper">
+                        <label className="login-label" htmlFor="password">Password</label>
+                        <input type="password" id="password" className="password" placeholder="Enter password" value={password} onChange={handleChangePassword} />
+                    </div>
+                    <div className="input-wrapper">
+                        <button type="submit" className="btn-login">Sign Up</button>
+                    </div>
+                    <div>
+                        Already have an account? <Link to="/">Log In</Link>
+                    </div>
+                </form>
+            </div>
+            <Footer />
         </div>
     )
 }

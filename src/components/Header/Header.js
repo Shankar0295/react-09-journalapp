@@ -1,7 +1,6 @@
 import React from 'react';
 import './Header.css';
-import LogOut from '../LogOut/LogOut'
-
+import LogOut from '../LogOut/LogOut';
 
 const Header = ({ props }) => {
 

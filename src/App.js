@@ -12,9 +12,13 @@ import CreateJournal from './pages/CreateJournal/CreateJournal';
 import JournalDescription from './pages/JournalDescription/JournalDescription';
 import SignUp from './components/SignUp/SignUp'
 import { UserAuthContextProvider } from './context/UserAuthContext';
-import ProtectedRoute from './auth/ProtectedRoute'
+import ProtectedRoute from './auth/ProtectedRoute';
+
 function App() {
   let location = useLocation();
+  if (location.pathname === '/') {
+    sessionStorage.clear()
+  }
   return (
     <div className="App">
       <Header props={location.pathname} />
