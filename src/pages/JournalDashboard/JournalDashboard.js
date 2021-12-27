@@ -1,13 +1,32 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './JournalDashboard.css';
 import { useNavigate, Link } from 'react-router-dom';
-import Footer from '../../components/Footer/Footer'
+import Footer from '../../components/Footer/Footer';
+import { collection, getDocs } from "firebase/firestore";
+import { useUserAuth } from '../../context/UserAuthContext';
+import { db } from '../../auth/firebase';
 
 const JournalDashboard = () => {
     let navigate = useNavigate();
+    const { user } = useUserAuth();
+    console.log(user)
     const gotoCreate = (e) => {
         return navigate('/create')
     }
+
+    useEffect(() => {
+        getData()
+    })
+
+    const getData = async () => {
+        const querySnapshot = await getDocs(collection(db, "journals", user.uid, "data"));
+        querySnapshot.forEach((doc) => {
+            // doc.data() is never undefined for query doc snapshots
+            console.log(doc.id, " => ", doc.data());
+        });
+    };
+
+
     return (
         <div className="content">
             <div className="create-button-container"><button onClick={gotoCreate} className="pen-btn">Create Journal</button></div>

@@ -17,7 +17,7 @@ import ProtectedRoute from './auth/ProtectedRoute';
 function App() {
   let location = useLocation();
   if (location.pathname === '/') {
-    sessionStorage.clear()
+    sessionStorage.clear();
   }
   return (
     <div className="App">
