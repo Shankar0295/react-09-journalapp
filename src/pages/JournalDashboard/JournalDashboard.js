@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './JournalDashboard.css';
 import { useNavigate, Link } from 'react-router-dom';
 import Footer from '../../components/Footer/Footer';
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
 import { useUserAuth } from '../../context/UserAuthContext';
 import { db } from '../../auth/firebase';
 import { FaEdit, FaTrash } from 'react-icons/fa';
@@ -17,7 +17,7 @@ const JournalDashboard = () => {
     }
 
     useEffect(() => {
-        getData()
+        getData()// eslint-disable-next-line
     }, [])
 
     const getData = async () => {
@@ -35,13 +35,19 @@ const JournalDashboard = () => {
         navigate('/create', { state: findItem })
     }
 
+    const handleDelete = async (id) => {
+        await deleteDoc(doc(db, "journals", user.uid, "data", id))
+        alert("Removed one item")
+        await getData();
+    }
+
     console.log(data)
 
 
     return (
         <div className="content">
             <div className="create-button-container"><button onClick={gotoCreate} className="pen-btn">Create Journal</button></div>
-            <div className="journalcard-container">
+            {data.length > 0 ? <div className="journalcard-container">
                 {data.map((item) => {
                     return (
                         <div className="journal-text_container" key={item.id}>
@@ -56,13 +62,13 @@ const JournalDashboard = () => {
                                 <Link to="/journaldetails" key={item.id}>Read more</Link>
                                 <div>
                                     <FaEdit className="icon-edit" onClick={() => handleEdit(item.id)} />
-                                    <FaTrash />
+                                    <FaTrash onClick={() => handleDelete(item.id)} />
                                 </div>
                             </div>
                         </div>
                     )
                 })}
-            </div>
+            </div> : <div>No items to show</div>}
             <Footer />
         </div>
 
