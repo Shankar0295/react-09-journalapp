@@ -38,7 +38,7 @@
     width: 80%;
     margin-left: auto;
     margin-right: auto;
-    margin-top:30px;
+    /* margin-top:30px; */
     margin-bottom:30px;
   }
 
@@ -89,4 +89,36 @@
   .goback{
     font-size: 16px;
     color: #000;
+  }
+
+
+  @media (min-width: 320px) and (max-width: 767px){
+    .radio-toolbar-container{
+      display:flex;
+      flex-direction : column;
+    }
+    .radio-toolbar label {
+      width: 100%;
+    text-align: center;
+    margin-bottom: 5px;
+    }
+    .save-btn{
+      width:100%;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px){
+    .radio-toolbar-container{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      text-align: center;
+    }
+    .radio-toolbar label {
+      width: 95%;
+    text-align: center;
+    margin-bottom: 5px;
+    }
+    .save-btn{
+      width:20%;
+    }
   }

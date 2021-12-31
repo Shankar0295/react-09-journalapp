@@ -14,9 +14,12 @@ const CreateJournal = () => {
     const [edit, setEdit] = useState(false)
     const [radioVal, setRadioVal] = useState("")
     const [dateVal, setDateVal] = useState("")
+
     const { user } = useUserAuth();
     console.log(user)
     const { state } = useLocation();
+    const location = useLocation();
+    console.log(location)
     console.log(state, "state")
     console.log(edit)
     const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -67,6 +70,20 @@ const CreateJournal = () => {
             setEdit(true)
         }
     }, [state])
+
+    useEffect(() => {
+        window.addEventListener("beforeunload", handleBeforeUnload);
+        return () => {
+            window.removeEventListener("beforeunload", handleBeforeUnload);
+        };
+    }, []);
+
+    const handleBeforeUnload = (e) => {
+        e.preventDefault();
+        e.returnValue = false;
+
+    };
+
     const dateHandler = () => {
         const date = new Date();
         return date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear()
@@ -144,7 +161,6 @@ const CreateJournal = () => {
         console.log(e.target.checked, i)
         setRadioVal(e.target.value)
     }
-
 
     return (
         <div className="content ml-0">

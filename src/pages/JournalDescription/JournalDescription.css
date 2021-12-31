@@ -26,3 +26,15 @@
 .date-color{
     color: #333;
 }
+
+@media (min-width: 320px) and (max-width: 767px){
+    .added-date{
+        text-align: left;
+    }
+    .description-container{
+        text-align: left;
+    }
+    .description-text{
+        margin-top: 10px;
+    }
+  }
