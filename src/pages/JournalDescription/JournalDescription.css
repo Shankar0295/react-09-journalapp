@@ -1,11 +1,28 @@
 .description-container{
-    width: 90%;
+    width: 60%;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 20px;
-     
+    margin-top: 30px;
+    text-align: justify;
+    font-size: 16px;
+    font-weight: 500;   
 }
 
-.description-text{
+.read-journal{
+    border: 0;
+    background: none;
     font-size: 16px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.added-date{
+    text-align: right
+}
+.description-text{
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+.date-color{
+    color: #333;
 }

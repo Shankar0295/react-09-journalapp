@@ -19,6 +19,7 @@ const CreateJournal = () => {
     const { state } = useLocation();
     console.log(state, "state")
     console.log(edit)
+    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
     const emotionContainer = [{
         id: 1,
@@ -71,6 +72,13 @@ const CreateJournal = () => {
         return date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear()
     }
 
+    const getDayOfWeek = (dateValue) => {
+        const date = new Date(dateValue)
+        const day = date.getDay()
+        return days[day]
+    }
+
+
     const handleTextarea = (e) => {
         e.preventDefault();
         console.log(e)
@@ -103,7 +111,7 @@ const CreateJournal = () => {
             console.log(user.uid)
             try {
                 await setDoc(journalRef,
-                    { text: value, mood: mood, moodIcon: emojiPicker(mood), timestamp: serverTimestamp(), id: id, date_added: date, date_created: dateHandler(), date_modified: "", type: "moodjournal" }, { merge: true })
+                    { text: value, mood: mood, moodIcon: emojiPicker(mood), timestamp: serverTimestamp(), id: id, date_added: date, day_added: getDayOfWeek(date), date_created: dateHandler(), date_modified: "", type: "moodjournal" }, { merge: true })
                 alert("Added Successfully");
                 setText("");
                 setRadioVal("");
@@ -118,7 +126,7 @@ const CreateJournal = () => {
             console.log(user.uid, id)
             try {
                 await setDoc(journalRef,
-                    { text: value, mood: mood, timestamp: serverTimestamp(), id: id, date_added: date, date_created: state.date_created, date_modified: dateHandler(), type: "moodjournal" }, { merge: true })
+                    { text: value, mood: mood, moodIcon: emojiPicker(mood), timestamp: serverTimestamp(), id: id, date_added: date, day_added: getDayOfWeek(date), date_created: state.date_created, date_modified: dateHandler(), type: "moodjournal" }, { merge: true })
                 setEdit(false);
                 setText("");
                 setRadioVal("");

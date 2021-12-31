@@ -1,10 +1,32 @@
 import React from 'react';
-import './JournalDescription.css'
+import './JournalDescription.css';
+import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { dateConverter } from '../../utils/helper'
+
 const JournalDescription = () => {
+    const { state } = useLocation();
+    console.log(state, "state")
+
+    const { date_added, day_added, date_created, date_modified, text, moodIcon, mood } = state
+
     return (
         <div className="content">
             <div className="description-container">
-                <p className="description-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                <div>
+                    <Link to="/journaldashboard" className="goback">Go back</Link>
+                </div>
+                <div className="description-text added-date">
+                    <p>{day_added}, {dateConverter(date_added)}</p>
+                </div>
+                <div className="description-text">
+                    <p className="description-text">{text}</p>
+                    <p>{moodIcon} {mood}</p>
+                </div>
+                <div className="description-text date-color">
+                    <p><em>Date Created: {date_created}</em></p>
+                    {date_modified && <p><em>Date Modified: {date_modified}</em></p>}
+                </div>
             </div>
         </div>
     )
