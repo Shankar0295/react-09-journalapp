@@ -30,8 +30,14 @@ const JournalDashboard = () => {
         setData(arr)
     };
 
+    const dateConverter = (addedDate) => {
+        const dateConverter = addedDate.toString().split('-').reverse().join('/')
+        return dateConverter
+    }
+
     const handleEdit = (id) => {
         let findItem = data.find((item) => item.id === id)
+        findItem.date_added.split('/').reverse().join('-')
         navigate('/create', { state: findItem })
     }
 
@@ -54,8 +60,8 @@ const JournalDashboard = () => {
                             <p className="journal-text">{item.text}
                             </p>
                             <div className="journal-mood">
-                                <p>:) {item.mood}</p>
-                                <p>{item.date_added}</p>
+                                <p>{item.moodIcon} {item.mood}</p>
+                                <p>{dateConverter(item.date_added)}</p>
                             </div>
                             <hr className="seperator"></hr>
                             <div className="journal-stamp">

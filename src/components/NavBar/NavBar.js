@@ -10,10 +10,10 @@ const NavBar = () => {
         <>
             <IconContext.Provider value={{ color: '#000' }}>
                 <div className="sidebar">
-                    <Link to="/journal"><FaPen /><span>Journal</span></Link>
-                    <Link to="/sleep-tracker"><FaBed /><span>Sleep Tracker</span></Link>
-                    <Link to="/meal-tracker"><FaUtensils /><span>Meal Tracker</span></Link>
-                    <Link to="/todos"><FaClipboardList /><span>Todo List</span></Link>
+                    <Link to="/journal"><FaPen /><span className="ml-16">Journal</span></Link>
+                    <Link to="/sleep-tracker"><FaBed /><span className="ml-16">Sleep Tracker</span></Link>
+                    <Link to="/meal-tracker"><FaUtensils /><span className="ml-16">Meal Tracker</span></Link>
+                    <Link to="/todos"><FaClipboardList /><span className="ml-16">Todo List</span></Link>
                 </div>
             </IconContext.Provider>
         </>
