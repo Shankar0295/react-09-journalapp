@@ -7,7 +7,7 @@ const Header = ({ props }) => {
     return (
         <div className="header">
             <h1 className="title">PENNIFY</h1>
-            {props === '/' ? <h4 className="portfolio-link">Portfoilo</h4> : <LogOut />}
+            {(props === '/' || props === '/signup') ? <h4 className="portfolio-link">Portfoilo</h4> : <LogOut />}
         </div>
     )
 }

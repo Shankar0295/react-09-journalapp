@@ -24,18 +24,18 @@ export function UserAuthContextProvider({ children }) {
     const login = async (email, password) => {
         try {
             await setPersistence(auth, browserSessionPersistence);
-            await signInWithEmailAndPassword(auth, email, password)
+            // await signInWithEmailAndPassword(auth, email, password)
+            return signInWithEmailAndPassword(auth, email, password)
         } catch (error) {
             console.log(error)
         }
-        // return signInWithEmailAndPassword(auth, email, password)
 
     }
 
     const googleSignIn = async () => {
         const googleAuthProvider = new GoogleAuthProvider();
         await setPersistence(auth, browserSessionPersistence);
-        await signInWithPopup(auth, googleAuthProvider)
+        return signInWithPopup(auth, googleAuthProvider)
     }
 
     const resetPassword = (email) => {

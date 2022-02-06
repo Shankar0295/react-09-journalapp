@@ -9,6 +9,7 @@ import { signOut } from 'firebase/auth';
 
 const LogoutButton = () => {
   const user = JSON.parse(sessionStorage.getItem('firebase:authUser:AIzaSyCpsdXyfZw0YraJ5EdeD3kZkpHBk1Sqq5M:[DEFAULT]'))
+  console.log(user, "user")
   const navigate = useNavigate();
   const handleLogout = (e) => {
     e.preventDefault();
@@ -18,11 +19,15 @@ const LogoutButton = () => {
       console.log(error.message)
     });
   };
+
   return (
-    <div>
+    <div>{(user !== null) &&
       <IconContext.Provider value={{ color: '#000' }}>
-        <Link className="link" to="/"><span className="user-details">Welcome, {user.email}</span><button onClick={handleLogout}><FaSignOutAlt /></button></Link>
-      </IconContext.Provider>
+        <Link className="link" to="/">
+          <span className="user-details">Welcome, {user.email}</span>
+          <button onClick={handleLogout}><FaSignOutAlt /></button>
+        </Link>
+      </IconContext.Provider>}
     </div>
   );
 };
